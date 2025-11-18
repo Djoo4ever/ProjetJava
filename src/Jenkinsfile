@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+
+    stages {
+
+        stage('Checkout') {
+            steps {
+                git url: 'https://github.com/Djoo4ever/ProjetJava.git', branch: 'main'
+            }
+        }
+
+        stage('Compilation') {
+            steps {
+                sh 'javac HelloWorld.java Merci.java DeRien.java'
+            }
+        }
+
+        stage('Run HelloWorld') {
+            steps {
+                sh 'java HelloWorld'
+            }
+        }
+
+        stage('Run Merci') {
+            steps {
+                sh 'java Merci'
+            }
+        }
+
+        stage('Run DeRien') {
+            steps {
+                sh 'java DeRien'
+            }
+        }
+
+    }
+}
