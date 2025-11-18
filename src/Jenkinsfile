@@ -2,36 +2,36 @@ pipeline {
     agent any
 
     stages {
-
         stage('Checkout') {
             steps {
-                git url: 'https://github.com/Djoo4ever/ProjetJava.git', branch: 'main'
+                git 'https://github.com/Djoo4ever/ProjetJava.git'
             }
         }
 
         stage('Compilation') {
             steps {
-                sh 'javac HelloWorld.java Merci.java DeRien.java'
+                echo 'Compilation des fichiers Java...'
+                sh 'javac src/HelloWorld.java src/Merci.java src/DeRien.java'
             }
         }
 
-        stage('Run HelloWorld') {
+        stage('Execution HelloWorld') {
             steps {
-                sh 'java HelloWorld'
+                sh 'java -cp src HelloWorld'
             }
         }
 
-        stage('Run Merci') {
+        stage('Execution Merci') {
             steps {
-                sh 'java Merci'
+                sh 'java -cp src Merci'
             }
         }
 
-        stage('Run DeRien') {
+        stage('Execution DeRien') {
             steps {
-                sh 'java DeRien'
+                sh 'java -cp src DeRien'
             }
         }
-
     }
 }
+
